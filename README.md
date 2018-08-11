@@ -43,11 +43,11 @@ if you installed youtube-dl in a virtual-env don't forget to activate it like th
 
 Now all you have to do is get a playlist url and run this command:
 ```
-$ ./dowload_audios_from_playlist.sh https://www.youtube.com/playlist?list=your_playlist_id
+$ ./download_audios_from_playlist.sh https://www.youtube.com/playlist?list=your_playlist_id
 ```
 ## Example
 
 ```
 $ source .youtube-dl-env/bin/activate
-$ ./dowload_audios_from_playlist.sh https://www.youtube.com/playlist?list=PLeDakahyfrO9K852phKZ0DCT_VxlhfRhl
+$ ./download_audios_from_playlist.sh https://www.youtube.com/playlist?list=PLeDakahyfrO9K852phKZ0DCT_VxlhfRhl
 ```
