@@ -25,8 +25,8 @@ cd $Folder
 
 for video_link in $(wget -q "$PLAYLIST_URL" -O - | grep -e "href=\"/watch?" | awk -F"href=" '{print $2}' | awk -F";" '{print $1}' | sort | uniq | sed 's|"|https://www.youtube.com|')
 do
-  SONG_NAME=$(wget -q "$video_link" -O - | grep "<title>" | awk -F "<title>" '{print $2}' | awk -F "</title>" '{print $1}' | recode html..ascii)
-  echo -e "\n[Debug] Downloading "$SONG_NAME" -----------> "$video_link"\n"
+  SONG_NAME=$(wget -q "$video_link" -O - | grep "<title>" | awk -F "<title>" '{print $2}' | awk -F "</title>" '{print $1}' | recode html..ISO-8859-1..ascii)
+  echo "[INFO] Downloading "$SONG_NAME" ("$video_link")"
   
-  youtube-dl --extract-audio -f bestaudio --audio-format wav --audio-quality 0 --output "$(echo $SONG_NAME | sed 's|[/ ]|_|g')".wav "$video_link" 
+  youtube-dl --extract-audio -q -f bestaudio --audio-format wav --audio-quality 0 --output "$(echo $SONG_NAME | sed -e 's|/|_|g' -e 's| - YouTube||g').wav" "$video_link" 
 done
